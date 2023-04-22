@@ -1,0 +1,9 @@
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/Experimental.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/Nightly.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/Continuous.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/my_dll.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/PACKAGE.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/RUN_TESTS.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/ALL_BUILD.dir
+C:/Users/1/Desktop/IPCD_back/CMakeFiles/ZERO_CHECK.dir

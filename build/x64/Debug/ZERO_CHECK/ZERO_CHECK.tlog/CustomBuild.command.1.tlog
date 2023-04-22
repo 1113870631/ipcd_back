@@ -1,0 +1,10 @@
+^C:\USERS\1\DESKTOP\IPCD_BACK\BUILD\CMAKEFILES\04B0571A8623FCA37E4DE141594F5D4A\GENERATE.STAMP.RULE
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SC:/Users/1/Desktop/IPCD_back -BC:/Users/1/Desktop/IPCD_back/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/1/Desktop/IPCD_back/build/IPCD_BACK.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

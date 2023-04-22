@@ -1,0 +1,10 @@
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/Experimental.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/Nightly.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/Continuous.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/IPCD_BACK_PORT.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/IPCD_back_test.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/PACKAGE.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/1/Desktop/IPCD_back/build/CMakeFiles/ZERO_CHECK.dir
