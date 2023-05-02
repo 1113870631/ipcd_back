@@ -1,3 +1,0 @@
-"D:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\IPCD_BACK_PORT.dir/objects.a
-"D:\Program Files\JetBrains\CLion 2023.1.1\bin\mingw\bin\ar.exe" qc CMakeFiles\IPCD_BACK_PORT.dir/objects.a @CMakeFiles\IPCD_BACK_PORT.dir\objects1
-"D:\Program Files\JetBrains\CLion 2023.1.1\bin\mingw\bin\g++.exe" -g -shared -o libIPCD_BACK_PORT.dll -Wl,--out-implib,libIPCD_BACK_PORT.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -Wl,--whole-archive CMakeFiles\IPCD_BACK_PORT.dir/objects.a -Wl,--no-whole-archive @CMakeFiles\IPCD_BACK_PORT.dir\linkLibs.rsp

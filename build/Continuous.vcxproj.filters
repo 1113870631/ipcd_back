@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\1\Desktop\IPCD_back\build\CMakeFiles\04b0571a8623fca37e4de141594f5d4a\Continuous.rule">
+    <CustomBuild Include="C:\Users\Administrator\Desktop\ipcd_back\build\CMakeFiles\43e35d91be92fdb3cba07dbcccd7f9c8\Continuous.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\1\Desktop\IPCD_back\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Administrator\Desktop\ipcd_back\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\1\Desktop\IPCD_back\build\CMakeFiles\Continuous" />
+    <None Include="C:\Users\Administrator\Desktop\ipcd_back\build\CMakeFiles\Continuous" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{28FBCAFA-B303-3812-9634-09D32CA90FA3}</UniqueIdentifier>
+      <UniqueIdentifier>{A22D5EF5-095C-33DE-A5FF-0D79C233ADFA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,1 +1,0 @@
-  -LC:/Users/1/Desktop/IPCD_back/lib  libIPCD_BACK_PORT.dll.a -lxml2 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
