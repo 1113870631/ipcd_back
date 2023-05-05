@@ -5,67 +5,62 @@
 #include <libxml/tree.h>
 #include <libxml/parser.h>
 #include <libxml/xmlstring.h>
+#include <stdbool.h>
 
+IPCD_CON_MAN *IpcdConMan = NULL;
 
-xmlDocPtr config_doc = NULL;
 int config_init()
 {  
-
-   config_doc = xmlReadFile(CONFIG_FILE, NULL, 256);
-   if (config_doc == NULL ) 
+   xmlNodePtr cur = NULL;
+   IpcdConMan = (IPCD_CON_MAN *)calloc(1, sizeof(IPCD_CON_MAN));
+   /* 获取文件 */
+   IpcdConMan->config_doc = xmlReadFile(CONFIG_FILE, NULL, 256);
+   if (IpcdConMan->config_doc == NULL ) 
    {
     fprintf(stderr,"Document not parsed successfully. \n");
     return -1;
    }
-   return 0;
-};
-
-int cfg_get_oneipcd(char *ipcd_name) {
-    static xmlNodePtr root_node = NULL;
-    static xmlNodePtr cur = NULL;
-    int i = 0;
-
-    if (config_doc == NULL) {
+    /* 获取根节点 */
+    IpcdConMan->root_node = xmlDocGetRootElement(IpcdConMan->config_doc);
+    if (IpcdConMan->root_node == NULL) {
+        fprintf(stderr, "get root_node fail. \n");
         return -1;
     }
 
-    if(root_node == NULL)
+    /* 获取IPCD_LIST节点 */
+    cur = IpcdConMan->root_node->xmlChildrenNode;
+    /* 寻找 IPCD_LIST 节点*/
+    while (cur != NULL) 
     {
-        root_node = xmlDocGetRootElement(config_doc);
-        if (root_node == NULL) {
-            fprintf(stderr, "get root_node fail. \n");
-            return -1;
-        }
-        cur = root_node->xmlChildrenNode;
-        /* 寻找 IPCD_LIST 节点*/
-        while (cur != NULL) {
-            if (xmlStrcmp(cur->name, (const xmlChar *) "IPCD_LIST") == 0) {
-                break;
-            };
-            cur = cur->next;
-        }
-        
-        if(cur == NULL)
-        {
-            return -1;
-        }
-        else
-        {
-            cur = cur->children;
-        }
+        if (xmlStrcmp(cur->name, (const xmlChar *) "IPCD_LIST") == 0) {
+            break;
+        };
+        cur = cur->next;
+    }
+    IpcdConMan->cur = cur;
+    IpcdConMan->ipcd_list = cur;
+
+   return 0;
+};
+
+int cfg_get_oneipcd(char **ipcd_name) {
+    xmlNodePtr root_node = NULL;
+    static xmlNodePtr cur = NULL;
+    static bool end_flag = false;
+    
+    if((cur == NULL) && (end_flag != true))
+    {
+        cur = IpcdConMan->ipcd_list;
+        cur = cur->children;
     }
 
+    *ipcd_name = (char*)cur->name;
     printf("%s\n",cur->name);
-    if (cur->next != NULL)
+    cur = cur->next;
+    if(cur == NULL);
     {
-      cur = cur->next;
-      return 0;
+      end_flag = true;
     }
-    else
-    {
-      return -1;
-    }
-    
 };
 
 int cfg_get_base_confing()

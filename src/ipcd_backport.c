@@ -20,21 +20,28 @@ void writ_log(char * log)
     fclose(log_file);
 };
 
-int IPCD_back_getallipcd(IPCD_MANGER * ipcd_man)
-{
-
-   return 0;
-};
-
 int IPCD_back_init(IPCD_MANGER *ipcd_man)
 {
    int i = 0;
    /* 读取配置文件 */
    config_init();
+   /* 读取所有的IPCD */
    for(i=0; ;i++)
    {
-     if(cfg_get_oneipcd(ipcd_man->ipcd_info_array[i]->ipcd_name) < 0)
+     if(ipcd_man->ipcd_info_array[i] == NULL)
      {
+       ipcd_man->ipcd_info_array[i] = (IPCD_INFO*)calloc(1,sizeof(IPCD_INFO));
+       if(ipcd_man->ipcd_info_array[i] == NULL)
+       {
+         return -1;
+       }
+     }
+
+     ipcd_man->ipcd_info_array[i]->pos = i;
+     if(cfg_get_oneipcd(&ipcd_man->ipcd_info_array[i]->ipcd_name) < 0)
+     {
+      ipcd_man->ipcd_num = i-1;
+      free(ipcd_man->ipcd_info_array[i]);
       break;
      };
    }
@@ -45,16 +52,19 @@ int IPCD_back_init(IPCD_MANGER *ipcd_man)
 extern DllExport void* IPCD_back_start()
 { 
    int ret = 0; 
+   int i = 0;
    ipcd_man_back =  (IPCD_MANGER*)malloc(sizeof(IPCD_MANGER));
    if(ipcd_man_back == NULL)
    {
       return NULL;
    }
    
+   memset(ipcd_man_back->ipcd_info_array, 0 ,sizeof(ipcd_man_back->ipcd_info_array));
+
    ret = IPCD_back_init(ipcd_man_back);
    if(ret < 0)
    {
-     //writ_log("back init fail");
+     writ_log("back init fail");
    }
 
 };

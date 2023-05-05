@@ -11,7 +11,7 @@
 DllExport typedef struct  ipcd_info
 {
   int pos;
-  char ipcd_name[MAX_LEN];
+  char *ipcd_name;
 }IPCD_INFO;
 
 DllExport typedef struct  ipcd_manger
