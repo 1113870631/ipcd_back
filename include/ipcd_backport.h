@@ -1,8 +1,6 @@
 #ifndef __IPCD_BACK_PORT_H_
 #define __IPCD_BACK_PORT_H_
 
-#include <strings.h>
-
 #define DllExport   __declspec( dllexport )//宏定义
 #define  CONFIG_FILE "config.xml"
 #define  MAX_NUM 1024

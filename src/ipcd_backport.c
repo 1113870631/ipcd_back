@@ -23,7 +23,7 @@ void writ_log(char * log)
 int IPCD_back_init(IPCD_MANGER *ipcd_man)
 {
    int i = 0;
-   /* 读取配置文件 */
+   /* 载入配置文件 */
    config_init();
    /* 读取所有的IPCD */
    for(i=0; ;i++)

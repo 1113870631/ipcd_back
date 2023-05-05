@@ -1,17 +1,20 @@
 [
 {
-  "directory": "C:/Users/Administrator/Desktop/ipcd_back/build",
-  "command": "D:\\mingw64\\bin\\gcc.exe -Dipcd_backport_EXPORTS @CMakeFiles/ipcd_backport.dir/includes_C.rsp -g -o CMakeFiles\\ipcd_backport.dir\\src\\ipcd_backport.c.obj -c C:\\Users\\Administrator\\Desktop\\ipcd_back\\src\\ipcd_backport.c",
-  "file": "C:/Users/Administrator/Desktop/ipcd_back/src/ipcd_backport.c"
+  "directory": "C:/Users/1/Desktop/1/ipcd_back/build",
+  "command": "D:\\minGW\\mingw64\\bin\\gcc.exe -Dipcd_backport_EXPORTS @CMakeFiles/ipcd_backport.dir/includes_C.rsp -g -o CMakeFiles\\ipcd_backport.dir\\src\\ipcd_backport.c.obj -c C:\\Users\\1\\Desktop\\1\\ipcd_back\\src\\ipcd_backport.c",
+  "file": "C:/Users/1/Desktop/1/ipcd_back/src/ipcd_backport.c",
+  "output": "CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj"
 },
 {
-  "directory": "C:/Users/Administrator/Desktop/ipcd_back/build",
-  "command": "D:\\mingw64\\bin\\gcc.exe -Dipcd_backport_EXPORTS @CMakeFiles/ipcd_backport.dir/includes_C.rsp -g -o CMakeFiles\\ipcd_backport.dir\\src\\config.c.obj -c C:\\Users\\Administrator\\Desktop\\ipcd_back\\src\\config.c",
-  "file": "C:/Users/Administrator/Desktop/ipcd_back/src/config.c"
+  "directory": "C:/Users/1/Desktop/1/ipcd_back/build",
+  "command": "D:\\minGW\\mingw64\\bin\\gcc.exe -Dipcd_backport_EXPORTS @CMakeFiles/ipcd_backport.dir/includes_C.rsp -g -o CMakeFiles\\ipcd_backport.dir\\src\\config.c.obj -c C:\\Users\\1\\Desktop\\1\\ipcd_back\\src\\config.c",
+  "file": "C:/Users/1/Desktop/1/ipcd_back/src/config.c",
+  "output": "CMakeFiles/ipcd_backport.dir/src/config.c.obj"
 },
 {
-  "directory": "C:/Users/Administrator/Desktop/ipcd_back/build",
-  "command": "D:\\mingw64\\bin\\gcc.exe  @CMakeFiles/IPCD_back_test.dir/includes_C.rsp -g -o CMakeFiles\\IPCD_back_test.dir\\main.c.obj -c C:\\Users\\Administrator\\Desktop\\ipcd_back\\main.c",
-  "file": "C:/Users/Administrator/Desktop/ipcd_back/main.c"
+  "directory": "C:/Users/1/Desktop/1/ipcd_back/build",
+  "command": "D:\\minGW\\mingw64\\bin\\gcc.exe  @CMakeFiles/IPCD_back_test.dir/includes_C.rsp -g -o CMakeFiles\\IPCD_back_test.dir\\main.c.obj -c C:\\Users\\1\\Desktop\\1\\ipcd_back\\main.c",
+  "file": "C:/Users/1/Desktop/1/ipcd_back/main.c",
+  "output": "CMakeFiles/IPCD_back_test.dir/main.c.obj"
 }
 ]

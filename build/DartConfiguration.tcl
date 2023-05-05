@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/Administrator/Desktop/ipcd_back
-BuildDirectory: C:/Users/Administrator/Desktop/ipcd_back/build
+SourceDirectory: C:/Users/1/Desktop/1/ipcd_back
+BuildDirectory: C:/Users/1/Desktop/1/ipcd_back/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: ww
+Site: DESKTOP-4RO0H80
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Win32-mingw32-make
@@ -27,8 +27,8 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "D:/Program Files/Microsoft Visual Studio/2022/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe" "C:/Users/Administrator/Desktop/ipcd_back"
-MakeCommand: D:/Program\ Files/Microsoft\ Visual\ Studio/2022/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
+ConfigureCommand: "D:/Program Files/CMake/bin/cmake.exe" "C:/Users/1/Desktop/1/ipcd_back"
+MakeCommand: D:/Program\ Files/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -45,7 +45,7 @@ SVNOptions:
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: D:/Git/cmd/git.exe
+GITCommand: D:/Program Files/Git/cmd/git.exe
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 
@@ -58,13 +58,13 @@ P4UpdateOptions:
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: D:/Git/cmd/git.exe
+UpdateCommand: D:/Program Files/Git/cmd/git.exe
 UpdateOptions: 
 UpdateType: git
 
 # Compiler info
-Compiler: D:/mingw64/bin/g++.exe
-CompilerVersion: 8.1.0
+Compiler: D:/minGW/mingw64/bin/g++.exe
+CompilerVersion: 12.2.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -81,7 +81,7 @@ MemoryCheckCommandOptions:
 MemoryCheckSuppressionFile: 
 
 # Coverage
-CoverageCommand: D:/mingw64/bin/gcov.exe
+CoverageCommand: D:/minGW/mingw64/bin/gcov.exe
 CoverageExtraFlags: -l
 
 # Testing options

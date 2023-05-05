@@ -7,7 +7,7 @@ int main() {
     xmlDocPtr doc = NULL;
     xmlNodePtr cur = NULL;
     IPCD_back_start();
-
+    printf("hello\n");
   // doc = xmlReadFile(CONFIG_FILE, NULL, 256);
   // if (doc == NULL )
   // {

@@ -54,13 +54,24 @@ int cfg_get_oneipcd(char **ipcd_name) {
         cur = cur->children;
     }
 
-    *ipcd_name = (char*)cur->name;
-    printf("%s\n",cur->name);
+    
+    if(cur != NULL)
+    {
+      *ipcd_name = (char*)cur->name;
+      printf("%s\n",cur->name);  
+    }
+    else
+    {
+        return -1;
+    }
+    
     cur = cur->next;
-    if(cur == NULL);
+
+    if(cur == NULL)
     {
       end_flag = true;
     }
+    return 0;
 };
 
 int cfg_get_base_confing()
