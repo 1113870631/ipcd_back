@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/1/Desktop/1/ipcd_back
+# Install script for directory: C:/Users/1/Desktop/1/ipcd_back/ipcd_back
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/1/Desktop/1/ipcd_back/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

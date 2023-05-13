@@ -66,7 +66,7 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/Users/1/Desktop/1/ipcd_back/include"
+					"path" : "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include"
 				}
 			],
 			"language" : "C",
@@ -98,7 +98,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LC:\\Users\\1\\Desktop\\1\\ipcd_back\\lib",
+				"fragment" : "-LC:\\Users\\1\\Desktop\\1\\ipcd_back\\ipcd_back\\lib",
 				"role" : "libraryPath"
 			},
 			{

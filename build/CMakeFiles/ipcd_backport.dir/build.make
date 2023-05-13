@@ -52,10 +52,10 @@ RM = "D:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\1\Desktop\1\ipcd_back
+CMAKE_SOURCE_DIR = C:\Users\1\Desktop\1\ipcd_back\ipcd_back
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\1\Desktop\1\ipcd_back\build
+CMAKE_BINARY_DIR = C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ipcd_backport.dir/depend.make
@@ -70,33 +70,33 @@ include CMakeFiles/ipcd_backport.dir/flags.make
 
 CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj: CMakeFiles/ipcd_backport.dir/flags.make
 CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj: CMakeFiles/ipcd_backport.dir/includes_C.rsp
-CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj: C:/Users/1/Desktop/1/ipcd_back/src/ipcd_backport.c
+CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj: C:/Users/1/Desktop/1/ipcd_back/ipcd_back/src/ipcd_backport.c
 CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj: CMakeFiles/ipcd_backport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\1\Desktop\1\ipcd_back\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj"
-	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj -MF CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.obj.d -o CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.obj -c C:\Users\1\Desktop\1\ipcd_back\src\ipcd_backport.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj"
+	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj -MF CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.obj.d -o CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.obj -c C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c
 
 CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.i"
-	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\1\Desktop\1\ipcd_back\src\ipcd_backport.c > CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.i
+	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c > CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.i
 
 CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.s"
-	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\1\Desktop\1\ipcd_back\src\ipcd_backport.c -o CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.s
+	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c -o CMakeFiles\ipcd_backport.dir\src\ipcd_backport.c.s
 
 CMakeFiles/ipcd_backport.dir/src/config.c.obj: CMakeFiles/ipcd_backport.dir/flags.make
 CMakeFiles/ipcd_backport.dir/src/config.c.obj: CMakeFiles/ipcd_backport.dir/includes_C.rsp
-CMakeFiles/ipcd_backport.dir/src/config.c.obj: C:/Users/1/Desktop/1/ipcd_back/src/config.c
+CMakeFiles/ipcd_backport.dir/src/config.c.obj: C:/Users/1/Desktop/1/ipcd_back/ipcd_back/src/config.c
 CMakeFiles/ipcd_backport.dir/src/config.c.obj: CMakeFiles/ipcd_backport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\1\Desktop\1\ipcd_back\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ipcd_backport.dir/src/config.c.obj"
-	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ipcd_backport.dir/src/config.c.obj -MF CMakeFiles\ipcd_backport.dir\src\config.c.obj.d -o CMakeFiles\ipcd_backport.dir\src\config.c.obj -c C:\Users\1\Desktop\1\ipcd_back\src\config.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ipcd_backport.dir/src/config.c.obj"
+	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ipcd_backport.dir/src/config.c.obj -MF CMakeFiles\ipcd_backport.dir\src\config.c.obj.d -o CMakeFiles\ipcd_backport.dir\src\config.c.obj -c C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\config.c
 
 CMakeFiles/ipcd_backport.dir/src/config.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ipcd_backport.dir/src/config.c.i"
-	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\1\Desktop\1\ipcd_back\src\config.c > CMakeFiles\ipcd_backport.dir\src\config.c.i
+	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\config.c > CMakeFiles\ipcd_backport.dir\src\config.c.i
 
 CMakeFiles/ipcd_backport.dir/src/config.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ipcd_backport.dir/src/config.c.s"
-	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\1\Desktop\1\ipcd_back\src\config.c -o CMakeFiles\ipcd_backport.dir\src\config.c.s
+	D:\minGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\config.c -o CMakeFiles\ipcd_backport.dir\src\config.c.s
 
 # Object files for target ipcd_backport
 ipcd_backport_OBJECTS = \
@@ -112,7 +112,7 @@ libipcd_backport.dll: CMakeFiles/ipcd_backport.dir/build.make
 libipcd_backport.dll: CMakeFiles/ipcd_backport.dir/linkLibs.rsp
 libipcd_backport.dll: CMakeFiles/ipcd_backport.dir/objects1.rsp
 libipcd_backport.dll: CMakeFiles/ipcd_backport.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\1\Desktop\1\ipcd_back\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libipcd_backport.dll"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libipcd_backport.dll"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ipcd_backport.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -124,6 +124,6 @@ CMakeFiles/ipcd_backport.dir/clean:
 .PHONY : CMakeFiles/ipcd_backport.dir/clean
 
 CMakeFiles/ipcd_backport.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\1\Desktop\1\ipcd_back C:\Users\1\Desktop\1\ipcd_back C:\Users\1\Desktop\1\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\build\CMakeFiles\ipcd_backport.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\1\Desktop\1\ipcd_back\ipcd_back C:\Users\1\Desktop\1\ipcd_back\ipcd_back C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build\CMakeFiles\ipcd_backport.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ipcd_backport.dir/depend
 

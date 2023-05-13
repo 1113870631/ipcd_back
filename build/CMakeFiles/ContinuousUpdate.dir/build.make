@@ -52,10 +52,10 @@ RM = "D:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\1\Desktop\1\ipcd_back
+CMAKE_SOURCE_DIR = C:\Users\1\Desktop\1\ipcd_back\ipcd_back
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\1\Desktop\1\ipcd_back\build
+CMAKE_BINARY_DIR = C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build
 
 # Utility rule file for ContinuousUpdate.
 
@@ -81,6 +81,6 @@ CMakeFiles/ContinuousUpdate.dir/clean:
 .PHONY : CMakeFiles/ContinuousUpdate.dir/clean
 
 CMakeFiles/ContinuousUpdate.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\1\Desktop\1\ipcd_back C:\Users\1\Desktop\1\ipcd_back C:\Users\1\Desktop\1\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\build\CMakeFiles\ContinuousUpdate.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\1\Desktop\1\ipcd_back\ipcd_back C:\Users\1\Desktop\1\ipcd_back\ipcd_back C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build C:\Users\1\Desktop\1\ipcd_back\ipcd_back\build\CMakeFiles\ContinuousUpdate.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ContinuousUpdate.dir/depend
 

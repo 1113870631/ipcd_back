@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/1/Desktop/1/ipcd_back
-BuildDirectory: C:/Users/1/Desktop/1/ipcd_back/build
+SourceDirectory: C:/Users/1/Desktop/1/ipcd_back/ipcd_back
+BuildDirectory: C:/Users/1/Desktop/1/ipcd_back/ipcd_back/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "D:/Program Files/CMake/bin/cmake.exe" "C:/Users/1/Desktop/1/ipcd_back"
+ConfigureCommand: "D:/Program Files/CMake/bin/cmake.exe" "C:/Users/1/Desktop/1/ipcd_back/ipcd_back"
 MakeCommand: D:/Program\ Files/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
