@@ -64,7 +64,7 @@ OneNode * list_for_each(list *pstlist, unsigned ulResetFlag)
        tmp = NULL;
        return NULL;
    }
-   
+
    if(tmp == NULL)
    {
      tmp = pstlist->pstHeadNode;
@@ -84,11 +84,45 @@ OneNode * list_for_each(list *pstlist, unsigned ulResetFlag)
 /* 销毁链表 */
 void list_destroy(list* pstList)
 {
+   OneNode *psttmp = NULL;
+   OneNode *pstNodetmp = NULL;
    if(pstList == NULL)
    {
       return;
    }
-   
-   
+    /* 释放用户内存 */
+   for(;;)
+   {
+      psttmp = list_for_each(pstList, 0);
+      if(psttmp != NULL)
+      {
+         free(psttmp->pUserdata);
+      }
+      else
+      {
+         list_for_each(pstList, 1);
+         break;
+      }
+   }
 
+   /* 释放Node内存 */
+   psttmp = pstList->pstHeadNode->pstnext;
+   free(pstList->pstHeadNode);
+   for(;;)
+   {
+      if(psttmp != NULL)
+      {
+         pstNodetmp = psttmp->pstnext;
+         free(psttmp);
+         psttmp = pstNodetmp;
+      }
+      else
+      {
+         break;
+      }
+   }
+
+   /* 释放链表管理结构体 */
+   free(pstList);
+   pstList = NULL;
 };
