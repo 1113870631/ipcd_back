@@ -13,6 +13,12 @@
 },
 {
   "directory": "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/build",
+  "command": "D:\\minGW\\mingw64\\bin\\gcc.exe -Dipcd_backport_EXPORTS @CMakeFiles/ipcd_backport.dir/includes_C.rsp -g -o CMakeFiles\\ipcd_backport.dir\\src\\list.c.obj -c C:\\Users\\1\\Desktop\\1\\ipcd_back\\ipcd_back\\src\\list.c",
+  "file": "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/src/list.c",
+  "output": "CMakeFiles/ipcd_backport.dir/src/list.c.obj"
+},
+{
+  "directory": "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/build",
   "command": "D:\\minGW\\mingw64\\bin\\gcc.exe  @CMakeFiles/IPCD_back_test.dir/includes_C.rsp -g -o CMakeFiles\\IPCD_back_test.dir\\main.c.obj -c C:\\Users\\1\\Desktop\\1\\ipcd_back\\ipcd_back\\main.c",
   "file": "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/main.c",
   "output": "CMakeFiles/IPCD_back_test.dir/main.c.obj"

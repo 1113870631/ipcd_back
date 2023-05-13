@@ -36,4 +36,4 @@ int list_insert_oneNode(int ulpos, void* puserdata, list *pstlist);
 /* 遍历链表所有元素 */
 OneNode * list_for_each(list *pstlist, unsigned ulResetFlag);
 
-#endif // ! __LIST_H__
+#endif // ! __LIST_H__ 

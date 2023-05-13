@@ -30,7 +30,11 @@ OneNode* list_add_OneNode(list *pstList, void* pUserData,char * pzNodeName,unsig
       pstList->pstTailNode->pstnext->pUserdata = (OneNode *)malloc(ulSize);
       pstList->pstTailNode = pstList->pstTailNode->pstnext;
       pstList->pstTailNode->pstnext = NULL;
-      memcpy(pstList->pstTailNode->pUserdata, pUserData, ulSize);
+      if(ulSize > 0)
+      {
+        memcpy(pstList->pstTailNode->pUserdata, pUserData, ulSize);
+      }
+      
       pstList->pstTailNode->uldatalen = ulSize;
       strncpy(pstList->pstTailNode->szNodeName,pzNodeName,sizeof(pstList->pstTailNode->szNodeName));
       pstList->ulNodeNum++;
@@ -38,11 +42,6 @@ OneNode* list_add_OneNode(list *pstList, void* pUserData,char * pzNodeName,unsig
    }
 };
 
-/* 删除一个元素 */
-int list_del_oneNode(char *pcnode_name, list *pstlist)
-{
-
-};
 /* 搜索一个元素 */
 OneNode* list_search_byName(char *pcnode_name, list *pstlist)
 {
@@ -58,13 +57,20 @@ int list_insert_oneNode(int ulpos, void* puserdata, list *pstlist)
 OneNode * list_for_each(list *pstlist, unsigned ulResetFlag)
 {
    static OneNode * tmp = NULL;
+    
+   /* 判断链表是否为空 */
+    if(pstlist->pstHeadNode == NULL)
+    {
+      return NULL;
+    }
 
+   /* 清空功能 */
    if(ulResetFlag == 1)
    {
        tmp = NULL;
        return NULL;
    }
-
+   /* 进行遍历 */
    if(tmp == NULL)
    {
      tmp = pstlist->pstHeadNode;
@@ -81,6 +87,64 @@ OneNode * list_for_each(list *pstlist, unsigned ulResetFlag)
    }
 
 };
+
+/* 删除一个元素 */
+int list_del_oneNode(char *pcnode_name, list *pstlist)
+{
+   int ulpos;
+   OneNode *pstTmpNode = NULL;
+   OneNode *pstNextNode = NULL;
+   OneNode *pstLastNode = NULL;
+   if((pstlist == NULL) || (pcnode_name == NULL))
+   {
+      return -1;
+   }
+
+   for(ulpos = 0; ; ulpos++)
+   {
+      pstTmpNode = list_for_each(pstlist, 0);
+      if(pstTmpNode != NULL)
+      {
+         if(strcmp(pcnode_name,pstTmpNode->szNodeName) == 0)
+         {
+            break;
+         }
+      }
+      else
+      {
+         break;
+      }
+      pstLastNode = pstTmpNode;
+   }
+
+   list_for_each(pstlist, 1);
+   
+   if(pstTmpNode == NULL)
+   {
+      return -1;
+   }
+
+   /* 将下一个node节点的数据拷贝到本节点  本节点指向下下个数据*/
+   if(pstTmpNode->pUserdata != NULL)
+   {
+      free(pstTmpNode->pUserdata);
+   }
+   pstNextNode = pstTmpNode->pstnext;
+      
+   if(pstNextNode != NULL)
+   {
+      memcpy(pstTmpNode, pstNextNode, sizeof(OneNode));
+      free(pstNextNode);
+   }
+   else
+   {
+      pstLastNode->pstnext = NULL;
+   }
+
+   return 0;
+};
+
+
 /* 销毁链表 */
 void list_destroy(list* pstList)
 {
@@ -94,7 +158,7 @@ void list_destroy(list* pstList)
    for(;;)
    {
       psttmp = list_for_each(pstList, 0);
-      if(psttmp != NULL)
+      if((psttmp != NULL) && (psttmp->pUserdata != NULL))
       {
          free(psttmp->pUserdata);
       }

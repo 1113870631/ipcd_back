@@ -9,6 +9,8 @@
 #include <libxml/parser.h>
 #include <config.h>
 
+#include "list.h"
+
 DllExport IPCD_MANGER * ipcd_man_back = NULL;
 
 void writ_log(char * log)
@@ -22,28 +24,18 @@ void writ_log(char * log)
 
 int IPCD_back_init(IPCD_MANGER *ipcd_man)
 {
-   int i = 0;
+   OneNode NewNode = {0};
+    int i = 0; 
+    char *name = NULL;
    /* 载入配置文件 */
    config_init();
+   
    /* 读取所有的IPCD */
-   for(i=0; ;i++)
+   ipcd_man->ipcd_num = 0;
+   while(cfg_get_oneipcd(&name) >= 0)
    {
-     if(ipcd_man->ipcd_info_array[i] == NULL)
-     {
-       ipcd_man->ipcd_info_array[i] = (IPCD_INFO*)calloc(1,sizeof(IPCD_INFO));
-       if(ipcd_man->ipcd_info_array[i] == NULL)
-       {
-         return -1;
-       }
-     }
-
-     ipcd_man->ipcd_info_array[i]->pos = i;
-     if(cfg_get_oneipcd(&ipcd_man->ipcd_info_array[i]->ipcd_name) < 0)
-     {
-      ipcd_man->ipcd_num = i-1;
-      free(ipcd_man->ipcd_info_array[i]);
-      break;
-     };
+      ipcd_man->ipcd_num ++;
+      list_add_OneNode(ipcd_man->ipcd_info_list, (void *)NULL, name, 0);
    }
 
    return  0;
@@ -57,10 +49,13 @@ extern DllExport void* IPCD_back_start()
    if(ipcd_man_back == NULL)
    {
       return NULL;
-   }
+   };
    
-   memset(ipcd_man_back->ipcd_info_array, 0 ,sizeof(ipcd_man_back->ipcd_info_array));
-
+   ipcd_man_back->ipcd_info_list = list_create();
+   if(ipcd_man_back->ipcd_info_list == NULL)
+   {
+      return NULL;
+   }
    ret = IPCD_back_init(ipcd_man_back);
    if(ret < 0)
    {

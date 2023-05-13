@@ -1,6 +1,8 @@
 #ifndef __IPCD_BACK_PORT_H_
 #define __IPCD_BACK_PORT_H_
 
+#include "list.h"
+
 #define DllExport   __declspec( dllexport )//宏定义
 #define  CONFIG_FILE "config.xml"
 #define  MAX_NUM 1024
@@ -20,7 +22,7 @@ DllExport typedef struct  ipcd_manger
     char win_linux_base_dir[MAX_LEN];
     char win_lint_dir[MAX_LEN];
     int ipcd_num;
-    IPCD_INFO *ipcd_info_array[MAX_NUM];
+    list *ipcd_info_list;
 }IPCD_MANGER;
 
 /* 对外接口 */
