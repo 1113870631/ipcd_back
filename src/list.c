@@ -7,14 +7,12 @@
 /* 创建链表 */
 list* list_create(void)
 { 
-   list *pstTmp = malloc(sizeof(list));
+   list *pstTmp = calloc(1, sizeof(list));
    if(pstTmp == NULL)
    {
       return NULL;
    }
-   pstTmp->pstHeadNode = (OneNode *)malloc(sizeof(OneNode));
-   memset(pstTmp->pstHeadNode, 0, sizeof(OneNode));
-
+   pstTmp->pstHeadNode = (OneNode *)calloc(1, sizeof(OneNode));
    pstTmp->pstTailNode = pstTmp->pstHeadNode;
    pstTmp->ulNodeNum = 1;
    pstTmp->pstHeadNode->ulPos = 1;
@@ -26,12 +24,12 @@ OneNode* list_add_OneNode(list *pstList, void* pUserData,char * pzNodeName,unsig
 {
    if(pstList->pstTailNode != NULL)
    {
-      pstList->pstTailNode->pstnext = (OneNode *)malloc(sizeof(OneNode));
-      pstList->pstTailNode->pstnext->pUserdata = (OneNode *)malloc(ulSize);
+      pstList->pstTailNode->pstnext = (OneNode *)calloc(1, sizeof(OneNode));
       pstList->pstTailNode = pstList->pstTailNode->pstnext;
       pstList->pstTailNode->pstnext = NULL;
       if(ulSize > 0)
       {
+        pstList->pstTailNode->pstnext->pUserdata = (OneNode *)calloc(1, ulSize);
         memcpy(pstList->pstTailNode->pUserdata, pUserData, ulSize);
       }
       

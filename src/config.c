@@ -43,10 +43,21 @@ int config_init()
    return 0;
 };
 
+void config_destroy()
+{
+  if(IpcdConMan->config_doc != NULL)
+  {
+    xmlFreeDoc(IpcdConMan->config_doc);
+    xmlCleanupParser();
+    xmlMemoryDump();
+  }
+}
+
 int cfg_get_oneipcd(char **ipcd_name) {
     xmlNodePtr root_node = NULL;
     static xmlNodePtr cur = NULL;
     static bool end_flag = false;
+    char * tmp;
     
     if((cur == NULL) && (end_flag != true))
     {
@@ -57,8 +68,8 @@ int cfg_get_oneipcd(char **ipcd_name) {
     
     if(cur != NULL)
     {
-      *ipcd_name = (char*)cur->name;
-      printf("%s\n",cur->name);  
+       tmp = (char*)XML_GET_CONTENT(cur->children);
+      *ipcd_name = tmp;
     }
     else
     {
@@ -79,13 +90,65 @@ int cfg_get_base_confing()
 
     return 0;
 };
+
 int cfg_add_ipcd(char *name)
 {
+    if(IpcdConMan == NULL)
+    {
+        return -1;
+    }
+    if(IpcdConMan->ipcd_list == NULL)
+    {
+        return -1;
+    }
+
+    if(xmlNewChild(IpcdConMan->ipcd_list, NULL, "ipcd", name) == NULL)
+    {
+        return -1;
+    };
+    
+    if(xmlSaveFormatFileEnc(CONFIG_FILE, IpcdConMan->config_doc, "UTF-8", 1) < 0)
+    {
+        return -1;
+    };
 
     return 0;
 };
+
 int cfg_remove_ipcd(char *name)
 {
+    xmlNodePtr tmpNode = NULL;
+    xmlChar *content = NULL;
+    char * tmp = NULL;
+    if(IpcdConMan == NULL)
+    {
+        return -1;
+    }
+    if(IpcdConMan->ipcd_list == NULL)
+    {
+        return -1;
+    }
+    tmpNode = IpcdConMan->ipcd_list->children;
 
-    return 0;
+    while(tmpNode != NULL)
+    {   
+        //tmp = (char*)xmlNodeGetContent( tmpNode->children );
+        tmp = XML_GET_CONTENT(tmpNode->children);
+        if(strcmp(name, tmp) == 0)
+        {
+            xmlUnlinkNode(tmpNode);
+            xmlFreeNode(tmpNode);
+            if(xmlSaveFormatFileEnc(CONFIG_FILE, IpcdConMan->config_doc, "UTF-8", 1) < 0)
+            {
+                return -1;
+            };
+            return 0;
+        }
+        else
+        {
+           tmpNode = tmpNode->next; 
+        };
+    }
+
+    return -1;
 };

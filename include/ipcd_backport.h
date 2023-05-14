@@ -34,8 +34,8 @@ extern  DllExport int IPCD_add(char * name, IPCD_MANGER *ipcd_man);
 extern  DllExport int IPCD_del(char * name, IPCD_MANGER *ipcd_man);
 extern  DllExport int IPCD_lint(char * name, IPCD_MANGER *ipcd_man);
 extern  DllExport int IPCD_remove(char * name, IPCD_MANGER *ipcd_man);
-
-extern  DllExport void IPCD_back_destroy(void * ipcd_man);
+extern  DllExport OneNode* IPCD_get_one_node(IPCD_MANGER *ipcd_man, int flag);
+extern  DllExport void IPCD_back_destroy(IPCD_MANGER * ipcd_man);
 
 
 #endif // !__IPCD_BACK_PORT_H_

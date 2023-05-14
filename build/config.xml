@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <IPCD_MAN>
   <BASE_CONFIG>
-    <win_base_dir></win_base_dir>
-	<svn_base_dir></svn_base_dir>
-	<linux_base_dir></linux_base_dir>
+    <win_base_dir/>
+    <svn_base_dir/>
+    <linux_base_dir/>
   </BASE_CONFIG>
   <IPCD_LIST>
     <ipcd>ipcd</ipcd>
-    <ipcd>ipcd</ipcd>
-    <ipcd>ipcd</ipcd>
+    <ipcd>IPCD_XXXX</ipcd>
+    <ipcd>IPCD_XXXX1</ipcd>
   </IPCD_LIST>
 </IPCD_MAN>
