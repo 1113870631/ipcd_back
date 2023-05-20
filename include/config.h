@@ -17,5 +17,5 @@ int cfg_get_base_confing();
 int cfg_add_ipcd(char *name);
 int cfg_remove_ipcd(char *name);
 int cfg_get_oneipcd(char **ipcd_name);
-void config_destroy(void);
+//void config_destroy(void);
 #endif // ! _CONFIG_H_

@@ -82,8 +82,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				3
+				2
 			]
 		}
 	],
@@ -127,8 +126,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				2,
-				3
+				2
 			]
 		},
 		{
@@ -156,12 +154,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/config.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/list.c",
 			"sourceGroupIndex" : 0
 		}
 	],

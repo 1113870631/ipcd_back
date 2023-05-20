@@ -9,9 +9,9 @@
 #include <libxml/parser.h>
 #include <config.h>
 
-#include "list.h"
-
-DllExport IPCD_MANGER * ipcd_man_back = NULL;
+#include "list_kernel.h"
+IPCD_CON_MAN stCfgMan = {0};
+DllExport IPCD_MANGER stIpcdMan = {0};
 
 void writ_log(char * log)
 {
@@ -22,57 +22,93 @@ void writ_log(char * log)
     fclose(log_file);
 };
 
-int IPCD_back_init(IPCD_MANGER *ipcd_man)
+int IpcdManAddOne(IPCD_MANGER *pstIpcdMan, char *name)
 {
-   OneNode NewNode = {0};
+   IPCD_INFO_WITHLIST * new = (IPCD_INFO_WITHLIST *)calloc(1,sizeof(IPCD_INFO_WITHLIST));
+   if(NULL == new)
+   {
+      return -1;
+   }
+
+   strncpy(new->ipcd_name, name, sizeof(new->ipcd_name));
+   list_add_tail(&new->IpcdListHead, &pstIpcdMan->ipcd_info_list.IpcdListHead);
+   pstIpcdMan->ipcd_num++;
+   return 0;
+};
+
+int IpcdManDelOne(IPCD_MANGER *pstIpcdMan, char *name)
+{
+   struct list_head *pstTmpHead;
+   IPCD_INFO_WITHLIST * pstTmpInfo;
+
+   list_for_each(pstTmpHead, &pstIpcdMan->ipcd_info_list.IpcdListHead)
+   {
+      pstTmpInfo = (IPCD_INFO_WITHLIST *)pstTmpHead;
+      if(strcmp(name,pstTmpInfo->ipcd_name) == 0)
+      {
+         list_del(pstTmpHead);
+         pstIpcdMan->ipcd_num--;
+         return 0;
+      };
+   };
+
+   return -1;
+};
+
+IPCD_MANGER *IPCD_back_init(void)
+{
     int i = 0; 
     char *name = NULL;
    /* 载入配置文件 */
-   config_init();
+   config_init(&stCfgMan);
+
+   /* 初识化IPCD_man */
+   INIT_LIST_HEAD(&stIpcdMan.ipcd_info_list.IpcdListHead);
    
    /* 读取所有的IPCD */
-   ipcd_man->ipcd_num = 0;
    while(cfg_get_oneipcd(&name) >= 0)
    {
-      ipcd_man->ipcd_num ++;
       writ_log("get one icpd:");
       writ_log(name);
       writ_log("\n");
-      list_add_OneNode(ipcd_man->ipcd_info_list, (void *)NULL, name, 0);
+      IpcdManAddOne(&stIpcdMan, name);
    }
 
-   return  0;
+   return  &stIpcdMan;
 };
 
-extern DllExport void* IPCD_back_start()
-{ 
-   int ret = 0; 
-   int i = 0;
-   ipcd_man_back =  (IPCD_MANGER*)malloc(sizeof(IPCD_MANGER));
-   if(ipcd_man_back == NULL)
+void IpcdBackDestroy(IPCD_MANGER *pstIpcdMan)
+{
+   struct list_head *pstTmpHead;
+   IPCD_INFO_WITHLIST * pstTmpInfo;
+
+   list_for_each(pstTmpHead, &pstIpcdMan->ipcd_info_list.IpcdListHead)
    {
-      return NULL;
+      pstTmpInfo = (IPCD_INFO_WITHLIST *)pstTmpHead;
+      if(pstTmpInfo != NULL)
+      {
+         free(pstTmpInfo);
+      }
    };
-   
-   ipcd_man_back->ipcd_info_list = list_create();
-   if(ipcd_man_back->ipcd_info_list == NULL)
+};
+
+void ipcd_list_for_each(void)
+{
+   struct list_head *tmp;
+   IPCD_INFO_WITHLIST * tmp2;
+
+   list_for_each(tmp, &stIpcdMan.ipcd_info_list.IpcdListHead)
    {
-      return NULL;
-   }
-   ret = IPCD_back_init(ipcd_man_back);
-   if(ret < 0)
-   {
-     writ_log("back init fail");
-   }
-   return ipcd_man_back;
+      tmp2 = (IPCD_INFO_WITHLIST *)tmp;
+      printf("%s\n",tmp2->ipcd_name);
+   };
 };
 
 int IPCD_back_add(char * name, IPCD_MANGER *ipcd_man)
 {
    char buffer[1024] = {'\0'};
    /* 添加全局变量 */
-   ipcd_man->ipcd_num ++;
-   if(list_add_OneNode(ipcd_man->ipcd_info_list, NULL, name, 0) == NULL)
+   if(IpcdManAddOne(ipcd_man, name) < 0)
    {
       return -1;
    };
@@ -81,10 +117,10 @@ int IPCD_back_add(char * name, IPCD_MANGER *ipcd_man)
    {
       return -1;
    };
-   
+
    /* 克隆代码 */
    sprintf(buffer, "svn_get_code.bat %s", name);
-   system(buffer);
+   //system(buffer);
    return 0;
 };
 
@@ -92,11 +128,11 @@ int IPCD_back_del(char * name, IPCD_MANGER *ipcd_man)
 {
    char buffer[1024] = {'\0'};
    /* 删除全局变量 */
-   if(list_del_oneNode(name, ipcd_man->ipcd_info_list) < 0)
+   if(IpcdManDelOne(ipcd_man, name) < 0)
    {
       return -1;
    };
-
+   
    /* 操作配置文件 */
     if(cfg_remove_ipcd(name) < 0)
     {
@@ -121,45 +157,19 @@ int IPCD_back_remove(char * name, IPCD_MANGER *ipcd_man)
    return 0;
 };
 
-OneNode* IPCD_back_get_one_node(IPCD_MANGER *ipcd_man, int flag)
-{
-   if(flag == 1)
-   {
-      list_for_each(ipcd_man->ipcd_info_list, 1);
-   }
-   else
-   {
-      return list_for_each(ipcd_man->ipcd_info_list, 0);
-   }
-};
-
 /* 对外接口 */
-extern  DllExport int IPCD_add(char * name,  IPCD_MANGER *ipcd_man)
+int IPCD_add(char * name,  IPCD_MANGER *ipcd_man)
 {
     return IPCD_back_add(name, ipcd_man);
 };
-extern  DllExport int IPCD_del(char * name, IPCD_MANGER *ipcd_man)
+int IPCD_del(char * name, IPCD_MANGER *ipcd_man)
 {
    return IPCD_back_del(name, ipcd_man);
 };
-extern  DllExport int IPCD_lint(char * name, IPCD_MANGER *ipcd_man)
+int IPCD_lint(char * name, IPCD_MANGER *ipcd_man)
 {
    return IPCD_back_lint(name, ipcd_man);
 };
 
-extern  DllExport int IPCD_remove(char * name, IPCD_MANGER *ipcd_man)
-{
-   return IPCD_back_remove(name, ipcd_man);
-};
 
-extern  DllExport OneNode* IPCD_get_one_node(IPCD_MANGER *ipcd_man, int flag)
-{
-   return IPCD_back_get_one_node(ipcd_man, flag);
-};
-
-extern DllExport void IPCD_back_destroy(IPCD_MANGER * ipcd_man)
-{
-    list_destroy(ipcd_man->ipcd_info_list);
-    config_destroy();
-};
 

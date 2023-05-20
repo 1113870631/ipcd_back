@@ -607,30 +607,6 @@ src/ipcd_backport.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.s
 .PHONY : src/ipcd_backport.c.s
 
-src/list.obj: src/list.c.obj
-.PHONY : src/list.obj
-
-# target to build an object file
-src/list.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/list.c.obj
-.PHONY : src/list.c.obj
-
-src/list.i: src/list.c.i
-.PHONY : src/list.i
-
-# target to preprocess a source file
-src/list.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/list.c.i
-.PHONY : src/list.c.i
-
-src/list.s: src/list.c.s
-.PHONY : src/list.s
-
-# target to generate assembly for a file
-src/list.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/list.c.s
-.PHONY : src/list.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -681,9 +657,6 @@ help:
 	@echo ... src/ipcd_backport.obj
 	@echo ... src/ipcd_backport.i
 	@echo ... src/ipcd_backport.s
-	@echo ... src/list.obj
-	@echo ... src/list.i
-	@echo ... src/list.s
 .PHONY : help
 
 

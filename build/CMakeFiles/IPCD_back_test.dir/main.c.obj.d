@@ -1,7 +1,8 @@
 CMakeFiles/IPCD_back_test.dir/main.c.obj: \
  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\main.c \
  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\include/ipcd_backport.h \
- C:\Users\1\Desktop\1\ipcd_back\ipcd_back\include/list.h \
+ C:\Users\1\Desktop\1\ipcd_back\ipcd_back\include/list_kernel.h \
+ C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/libxml/tree.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/stdio.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/corecrt.h \
@@ -13,7 +14,6 @@ CMakeFiles/IPCD_back_test.dir/main.c.obj: \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
- C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/libxml/tree.h \
  D:/minGW/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed/limits.h \
  D:/minGW/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed/syslimits.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/limits.h \
@@ -50,4 +50,5 @@ CMakeFiles/IPCD_back_test.dir/main.c.obj: \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/stdlib.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
  D:/minGW/mingw64/x86_64-w64-mingw32/include/malloc.h \
- D:/minGW/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/mm_malloc.h
+ D:/minGW/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/mm_malloc.h \
+ C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/list_kernel.h

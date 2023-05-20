@@ -6,29 +6,27 @@
 #include <libxml/parser.h>
 #include <libxml/xmlstring.h>
 #include <stdbool.h>
-
 IPCD_CON_MAN *IpcdConMan = NULL;
 
-int config_init()
+int config_init(IPCD_CON_MAN *pstIpcdConMan)
 {  
    xmlNodePtr cur = NULL;
-   IpcdConMan = (IPCD_CON_MAN *)calloc(1, sizeof(IPCD_CON_MAN));
    /* 获取文件 */
-   IpcdConMan->config_doc = xmlReadFile(CONFIG_FILE, NULL, 256);
-   if (IpcdConMan->config_doc == NULL ) 
+   pstIpcdConMan->config_doc = xmlReadFile(CONFIG_FILE, NULL, 256);
+   if (pstIpcdConMan->config_doc == NULL ) 
    {
     fprintf(stderr,"Document not parsed successfully. \n");
     return -1;
    }
     /* 获取根节点 */
-    IpcdConMan->root_node = xmlDocGetRootElement(IpcdConMan->config_doc);
-    if (IpcdConMan->root_node == NULL) {
+    pstIpcdConMan->root_node = xmlDocGetRootElement(pstIpcdConMan->config_doc);
+    if (pstIpcdConMan->root_node == NULL) {
         fprintf(stderr, "get root_node fail. \n");
         return -1;
     }
 
     /* 获取IPCD_LIST节点 */
-    cur = IpcdConMan->root_node->xmlChildrenNode;
+    cur = pstIpcdConMan->root_node->xmlChildrenNode;
     /* 寻找 IPCD_LIST 节点*/
     while (cur != NULL) 
     {
@@ -37,17 +35,17 @@ int config_init()
         };
         cur = cur->next;
     }
-    IpcdConMan->cur = cur;
-    IpcdConMan->ipcd_list = cur;
-
+    pstIpcdConMan->cur = cur;
+    pstIpcdConMan->ipcd_list = cur;
+    IpcdConMan = pstIpcdConMan;
    return 0;
 };
 
-void config_destroy()
+void config_destroy(IPCD_CON_MAN *pstIpcdConMan)
 {
-  if(IpcdConMan->config_doc != NULL)
+  if(pstIpcdConMan->config_doc != NULL)
   {
-    xmlFreeDoc(IpcdConMan->config_doc);
+    xmlFreeDoc(pstIpcdConMan->config_doc);
     xmlCleanupParser();
     xmlMemoryDump();
   }
