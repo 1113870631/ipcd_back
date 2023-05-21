@@ -3,29 +3,27 @@
 #include <libxml/parser.h>
 #include <stdio.h>
 #include "list_kernel.h"
-
+void process1(IPCD_INFO_WITHLIST *ipcd_info)
+{
+    printf("name:%s\n",ipcd_info->ipcd_name);
+};
 int main() {
     int i = 0;
     xmlDocPtr doc = NULL;
     xmlNodePtr cur = NULL;
-    IPCD_MANGER * icpd_man;
-    system("pause");
-    icpd_man = IPCD_back_init();
-    
-    //IPCD_back_del("del_test", icpd_man);
-    //ipcd_list_for_each();
-    for(i=0; i<1000; i++)
-    {
-        IPCD_add("test", icpd_man);
-    }
-    system("pause");
-    IpcdBackDestroy(icpd_man);
-    system("pause");
-    // system("pause");
-    // IPCD_back_start();
-    // IPCD_add("test", ipcd_man_back);
-    // IPCD_del("test", ipcd_man_back);
-    // printf("hello\n");
-    // IPCD_back_destroy(ipcd_man_back);
+    IPCD_MANGER * ipcd_man;
+    struct list_head* info_tmp = NULL;
 
+    ipcd_man = IPCD_init();
+    void *info;
+    int  tmp = IPCD_list_foreach(ipcd_man, &info);
+    for(i=0; i<tmp; i++)
+    {
+       info_tmp = *(struct list_head**)info;
+       printf("%s\n",((IPCD_INFO_WITHLIST *)info_tmp)->ipcd_name);
+       info+=sizeof(void*);
+    }
+
+   // Ipcd_List_For_Each(process1);
+    IPCD_destroy(ipcd_man);
  }

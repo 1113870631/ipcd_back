@@ -11,7 +11,6 @@
 DllExport typedef struct  ipcd_info
 {
   struct list_head IpcdListHead;
-  int pos;
   char ipcd_name[1024];
 }IPCD_INFO_WITHLIST;
 
@@ -26,15 +25,14 @@ DllExport typedef struct  ipcd_manger
     IPCD_INFO_WITHLIST ipcd_info_list;
 }IPCD_MANGER;
 
+typedef void (*process)(IPCD_INFO_WITHLIST *ipcd_info, void * userdata);
+
 /* 对外接口 */
-
-/* 初始化 */
-//extern  DllExport void * IPCD_back_start();
-DllExport IPCD_MANGER *IPCD_back_init(void);
-DllExport int IPCD_add(char * name,  IPCD_MANGER *ipcd_man);
-DllExport int IPCD_del(char * name, IPCD_MANGER *ipcd_man);
-DllExport int IPCD_lint(char * name, IPCD_MANGER *ipcd_man);
-DllExport void IpcdBackDestroy(IPCD_MANGER *pstIpcdMan);
-DllExport void ipcd_list_for_each(void);
-
+DllExport void *IPCD_init(void);
+DllExport void IPCD_destroy(void *ipcd_man);
+DllExport int IPCD_add(char * name,  void *ipcd_man);
+DllExport int IPCD_del(char * name, void *ipcd_man);
+DllExport int IPCD_lint(char * name, void *ipcd_man);
+DllExport int IPCD_list_foreach(void *pstIpcdMan, void ** ppaptrarr);
+DllExport void *IPCD_node2info(void* node);
 #endif // !__IPCD_BACK_PORT_H_

@@ -12,10 +12,11 @@ typedef struct ipcd_config
     xmlNodePtr ipcd_list;
 }IPCD_CON_MAN;
 
-int config_init();
+int config_init(IPCD_CON_MAN *pstIpcdConMan);
+void config_destroy(void);
 int cfg_get_base_confing();
 int cfg_add_ipcd(char *name);
 int cfg_remove_ipcd(char *name);
 int cfg_get_oneipcd(char **ipcd_name);
-//void config_destroy(void);
+
 #endif // ! _CONFIG_H_

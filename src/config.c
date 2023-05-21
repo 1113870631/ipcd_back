@@ -41,11 +41,11 @@ int config_init(IPCD_CON_MAN *pstIpcdConMan)
    return 0;
 };
 
-void config_destroy(IPCD_CON_MAN *pstIpcdConMan)
+void config_destroy()
 {
-  if(pstIpcdConMan->config_doc != NULL)
+  if(IpcdConMan->config_doc != NULL)
   {
-    xmlFreeDoc(pstIpcdConMan->config_doc);
+    xmlFreeDoc(IpcdConMan->config_doc);
     xmlCleanupParser();
     xmlMemoryDump();
   }
@@ -85,7 +85,6 @@ int cfg_get_oneipcd(char **ipcd_name) {
 
 int cfg_get_base_confing()
 {
-
     return 0;
 };
 
