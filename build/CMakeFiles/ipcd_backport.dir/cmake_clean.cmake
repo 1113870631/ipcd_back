@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ipcd_backport.dir/src/c-log/log.c.obj"
+  "CMakeFiles/ipcd_backport.dir/src/c-log/log.c.obj.d"
   "CMakeFiles/ipcd_backport.dir/src/config.c.obj"
   "CMakeFiles/ipcd_backport.dir/src/config.c.obj.d"
   "CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj"

@@ -9,19 +9,26 @@
 #include <libxml/parser.h>
 #include <config.h>
 
+#include "log.h"
 #include "list_kernel.h"
-IPCD_CON_MAN stCfgMan = {0};
-IPCD_MANGER stIpcdMan = {0};
 
-void writ_log(char * log)
-{
-    FILE * log_file;
-    log_file  = fopen("back_log.txt", "a");
-    fputs(log,log_file);
-   //fputs("\n",log_file);
-    fclose(log_file);
-};
+IPCD_CON_MAN stCfgMan = {0};   /** 问题单管理配置文件 */
+IPCD_MANGER stIpcdMan = {0};   /** 问题单管理实例 */
 
+FILE *file_info_log = NULL;  /** info日志文件描述符 */
+FILE *file_debug_log = NULL; /** debug日志文件描述符 */
+
+char * path_info_log = "./log_info.txt";
+char * path_debug_log = "./log_debug.txt";
+
+/**
+ * @brief 
+ * IpcdManAddOne
+ * 添加一个问题单
+ * @param pstIpcdMan 问题单管理实例
+ * @param name       要添加的问题单名称
+ * @return int 
+ */
 int IpcdManAddOne(IPCD_MANGER *pstIpcdMan, char *name)
 {
    IPCD_INFO_WITHLIST * new = (IPCD_INFO_WITHLIST *)calloc(1,sizeof(IPCD_INFO_WITHLIST));
@@ -35,6 +42,14 @@ int IpcdManAddOne(IPCD_MANGER *pstIpcdMan, char *name)
    return 0;
 };
 
+/**
+ * @brief 
+ * IpcdManDelOne 
+ * 删除一个问题单
+ * @param pstIpcdMan 问题单管理实例
+ * @param name       要删除的问题单名称
+ * @return int       
+ */
 int IpcdManDelOne(IPCD_MANGER *pstIpcdMan, char *name)
 {
    struct list_head *pstTmpHead;
@@ -55,10 +70,52 @@ int IpcdManDelOne(IPCD_MANGER *pstIpcdMan, char *name)
    return -1;
 };
 
+int IPCD_logsys_init(void)
+{
+    log_set_level(0);
+    log_set_quiet(0);
+
+    file_info_log = fopen(path_info_log, "ab");
+    if(file_info_log == NULL)
+        return -1;
+
+    file_debug_log = fopen(path_debug_log, "ab");
+    if(file_debug_log == NULL)
+        return -1;
+
+    log_add_fp(file_info_log, LOG_INFO);
+    log_add_fp(file_debug_log, LOG_DEBUG);
+    
+    return 0;
+}
+
+void IPCD_logsys_destroy(void)
+{
+   if(NULL != file_info_log)
+   {
+      fclose(file_info_log);
+   }
+
+   if(NULL != file_debug_log)
+   {
+      fclose(file_debug_log);
+   }
+}
+
+/**
+ * @brief 
+ * IPCD_back_init
+ * 初始化
+ * @return void* 
+ */
 void *IPCD_back_init(void)
 {
     int i = 0; 
     char *name = NULL;
+
+    /* 初识化日志系统 */
+   IPCD_logsys_init();
+   log_info("log sys ok");
    /* 载入配置文件 */
    memset(&stCfgMan, 0 ,sizeof(stCfgMan));
    config_init(&stCfgMan);
@@ -70,15 +127,19 @@ void *IPCD_back_init(void)
    /* 读取所有的IPCD */
    while(cfg_get_oneipcd(&name) >= 0)
    {
-      writ_log("get one icpd:");
-      writ_log(name);
-      writ_log("\n");
+      log_info("init add ipcd:%s",name);
       IpcdManAddOne(&stIpcdMan, name);
    }
 
    return &stIpcdMan;
 };
 
+/**
+ * @brief 
+ * IpcdBackDestroy
+ * 销毁
+ * @param pstIpcdMan 
+ */
 void IpcdBackDestroy(IPCD_MANGER *pstIpcdMan)
 {
    struct list_head *pstTmpHead;
@@ -95,7 +156,14 @@ void IpcdBackDestroy(IPCD_MANGER *pstIpcdMan)
       }
    };
 };
-
+/**
+ * @brief 
+ * IPCD_back_list_foreach
+ * 遍历得到所有问题单节点的地址
+ * @param pstIpcdMan 
+ * @param ppaptrarr （ipcd1的地址，icpd2的地址 ......）
+ * @return int 得到的问题单总数
+ */
 int IPCD_back_list_foreach(IPCD_MANGER *pstIpcdMan, void ** ppaptrarr)
 { 
    int i = 0;
@@ -103,8 +171,9 @@ int IPCD_back_list_foreach(IPCD_MANGER *pstIpcdMan, void ** ppaptrarr)
    struct list_head *pstTmpHead;
    struct list_head **ppstTmpHead;
    IPCD_INFO_WITHLIST * pstTmpInfo;
-
-   paptrarr = (struct list_head *)calloc(1,pstIpcdMan->ipcd_num * sizeof(void *));
+   
+   /* 申请内存存储所有节点的地址 */
+   paptrarr = (struct list_head *)calloc(1, pstIpcdMan->ipcd_num * sizeof(void *));
    if(paptrarr != NULL)
    {
       *ppaptrarr = paptrarr;
@@ -113,7 +182,7 @@ int IPCD_back_list_foreach(IPCD_MANGER *pstIpcdMan, void ** ppaptrarr)
    {
       return -1;
    }
-
+   /* 遍历得到所有节点的地址 */
    list_for_each(pstTmpHead, &pstIpcdMan->ipcd_info_list.IpcdListHead)
    {
       i++;
@@ -125,9 +194,18 @@ int IPCD_back_list_foreach(IPCD_MANGER *pstIpcdMan, void ** ppaptrarr)
       *ppstTmpHead = pstTmpHead;
       paptrarr+=sizeof(struct list_head*);
    };
+
    return i;
 };
 
+/**
+ * @brief 
+ * IPCD_back_add
+ * 添加一个问题单
+ * @param name 
+ * @param ipcd_man 
+ * @return int 
+ */
 int IPCD_back_add(char * name, IPCD_MANGER *ipcd_man)
 {
    char buffer[1024] = {'\0'};
@@ -144,10 +222,18 @@ int IPCD_back_add(char * name, IPCD_MANGER *ipcd_man)
 
    /* 克隆代码 */
    sprintf(buffer, "svn_get_code.bat %s", name);
-   //system(buffer);
+   system(buffer);
    return 0;
 };
 
+/**
+ * @brief 
+ * IPCD_back_del
+ * 删除一个问题单
+ * @param name 
+ * @param ipcd_man 
+ * @return int 
+ */
 int IPCD_back_del(char * name, IPCD_MANGER *ipcd_man)
 {
    char buffer[1024] = {'\0'};
@@ -169,6 +255,14 @@ int IPCD_back_del(char * name, IPCD_MANGER *ipcd_man)
    return 0;
 };
 
+/**
+ * @brief 
+ * IPCD_back_lint
+ * pc lint
+ * @param name 
+ * @param ipcd_man 
+ * @return int 
+ */
 int IPCD_back_lint(char * name ,IPCD_MANGER *ipcd_man)
 {
    printf("lint %s\n",name);
@@ -199,6 +293,7 @@ int IPCD_lint(char * name, void *ipcd_man)
 
 void IPCD_destroy(void *ipcd_man)
 {
+   IPCD_logsys_destroy();
    IpcdBackDestroy(ipcd_man);
    config_destroy();
 };

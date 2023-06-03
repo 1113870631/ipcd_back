@@ -559,6 +559,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\IPCD_back_test.dir\build.make CMakeFiles/IPCD_back_test.dir/main.c.s
 .PHONY : main.c.s
 
+src/c-log/log.obj: src/c-log/log.c.obj
+.PHONY : src/c-log/log.obj
+
+# target to build an object file
+src/c-log/log.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/c-log/log.c.obj
+.PHONY : src/c-log/log.c.obj
+
+src/c-log/log.i: src/c-log/log.c.i
+.PHONY : src/c-log/log.i
+
+# target to preprocess a source file
+src/c-log/log.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/c-log/log.c.i
+.PHONY : src/c-log/log.c.i
+
+src/c-log/log.s: src/c-log/log.c.s
+.PHONY : src/c-log/log.s
+
+# target to generate assembly for a file
+src/c-log/log.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ipcd_backport.dir\build.make CMakeFiles/ipcd_backport.dir/src/c-log/log.c.s
+.PHONY : src/c-log/log.c.s
+
 src/config.obj: src/config.c.obj
 .PHONY : src/config.obj
 
@@ -651,6 +675,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... src/c-log/log.obj
+	@echo ... src/c-log/log.i
+	@echo ... src/c-log/log.s
 	@echo ... src/config.obj
 	@echo ... src/config.i
 	@echo ... src/config.s

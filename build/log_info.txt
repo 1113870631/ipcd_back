@@ -1,0 +1,5 @@
+2023-06-03 16:16:11 INFO  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c:118: log sys ok
+2023-06-03 16:16:11 INFO  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c:130: int add ipcd:test
+2023-06-03 16:16:11 INFO  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c:130: int add ipcd:test
+2023-06-03 16:16:11 INFO  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c:130: int add ipcd:test
+2023-06-03 16:16:11 INFO  C:\Users\1\Desktop\1\ipcd_back\ipcd_back\src\ipcd_backport.c:130: int add ipcd:test

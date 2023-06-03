@@ -290,4 +290,10 @@ CMakeFiles/ipcd_backport.dir/src/ipcd_backport.c.obj: \
  C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/libxml/SAX2.h \
  C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/config.h \
  C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/ipcd_backport.h \
+ C:/Users/1/Desktop/1/ipcd_back/ipcd_back/src/c-log/log.h \
+ D:/minGW/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/stdbool.h \
+ D:/minGW/mingw64/x86_64-w64-mingw32/include/time.h \
+ D:/minGW/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
+ D:/minGW/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+ D:/minGW/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
  C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include/list_kernel.h

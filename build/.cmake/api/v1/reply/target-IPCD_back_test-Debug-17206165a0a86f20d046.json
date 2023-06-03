@@ -30,25 +30,31 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 11,
+				"line" : 12,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 8,
+				"line" : 9,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 12,
+				"line" : 13,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
 				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 8,
 				"parent" : 0
 			}
 		]
@@ -67,6 +73,10 @@
 				{
 					"backtrace" : 4,
 					"path" : "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/1/Desktop/1/ipcd_back/ipcd_back/./src/c-log"
 				}
 			],
 			"language" : "C",
